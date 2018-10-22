@@ -1,6 +1,8 @@
-# Net Framework 4.6.1
 
-> Ejemplo básico “Hola Mundo”  implementando en la arquitectura
+
+# Domain-Driven-Design (DDD) / Net Framework 4.7.1
+
+> Ejemplo bÃ¡sico â€œHola Mundoâ€  implementando en la arquitectura
 > Domain-Driven-Design (DDD)
 
 ## Instalar, capa: 1-Presentation
@@ -18,15 +20,15 @@
 		 - Application
 		- Infrastructure
 		- 	Transversal	
- - App_Start			
-	 - UnityConfig.cs				
-		 - `RegisterTypes(IUnityContainer container) --> ennable -> container.LoadConfiguration();`
-		
-	 - WebUnityConfig.config
+	 - App_Start			
+		 - UnityConfig.cs				
+			 - `RegisterTypes(IUnityContainer container) --> ennable -> container.LoadConfiguration();`
 			
-		 - Example: dependency injection		 
-		<register type="Name namespace + interface, nameApplicationLayer"
-				  apTo="Name namespace + class, nameApplicationLayer" /
+		 - WebUnityConfig.config
+				
+			 - Example: dependency injection		 
+			<register type="Name namespace + interface, nameApplicationLayer"
+					  apTo="Name namespace + class, nameApplicationLayer" /
 				
 **2-Application**
  - Reference 		
