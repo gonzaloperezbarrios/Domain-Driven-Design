@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DomainService=Example.Domain.domain.services.car;
+using Example.Transversal.domain.entities.car;
+using DomainService = Example.Domain.domain.services.car;
+using DomainRepository = Example.Domain.repositories.contracts.car;
 
 namespace Example.Application.application.services.car
 {
@@ -15,11 +17,24 @@ namespace Example.Application.application.services.car
     /// </summary>
     public class CarService : ICarService
     {
+        // Obtiene el acceso a la logica del dominio
         DomainService.ICarService _domainICarService;
-        // Si agrego en el constructor el repository del dominio, tendria acceso a la base de datos indirectamente
-        public CarService(DomainService.ICarService domainICarService)
+        // Obtiene el acceso a la base de datos indirectamente
+        DomainRepository.ICarRepository _domainCarRepository;
+        public CarService(DomainService.ICarService domainICarService, DomainRepository.ICarRepository domainCarRepository)
         {
             this._domainICarService = domainICarService;
+            this._domainCarRepository = domainCarRepository;
+        }
+
+        public void Create(CarEntitie carEntitie)
+        {
+            _domainCarRepository.Create(carEntitie);
+        }
+
+        public List<CarEntitie> GetCars()
+        {
+            return _domainCarRepository.GetCars();
         }
 
         public string Turbo()

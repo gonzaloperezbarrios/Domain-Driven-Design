@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Example.Transversal.domain.entities.car;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Example.Application.application.services.car
     /// </summary>
     public interface ICarService
     {
-       string Turbo();
+        string Turbo();
+        List<CarEntitie> GetCars();
+        void Create(CarEntitie carEntitie);
     }
 }

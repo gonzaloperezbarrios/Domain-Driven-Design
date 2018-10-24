@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Example.Transversal.domain.entities.car
+namespace Example.Presentation.Web.Models
 {
-    public class CarEntitie
+    public class CarViewModel : ViewModelBase
     {
-        public int Id { get; set; }
+        public int? CarId { get; set; }
         [Required]
         [StringLength(200)]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Motor")]
         public string Engine { get; set; }
         [StringLength(100)]
-        public string Model { get; set; }
+        [Display(Name = "Modelo")]
+        public string ModelCar { get; set; }
     }
 }
