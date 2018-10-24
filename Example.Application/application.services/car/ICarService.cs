@@ -15,5 +15,8 @@ namespace Example.Application.application.services.car
         string Turbo();
         List<CarEntitie> GetCars();
         void Create(CarEntitie carEntitie);
+        void Update(CarEntitie carEntitie);
+        void Delete(int id);
+        CarEntitie GetCar(int id);
     }
 }

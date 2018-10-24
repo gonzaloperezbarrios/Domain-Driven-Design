@@ -16,5 +16,6 @@ namespace Example.Infrastructure.persistence.entityFramework
         }
 
         public DbSet<CarEntitie> Car { get; set; }
+        public DbSet<CarOwnerEntitie> CarOwner { get; set; }
     }
 }

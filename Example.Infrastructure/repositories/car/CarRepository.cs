@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Example.Domain.repositories.contracts.car;
 using Example.Transversal.domain.entities.car;
 using Example.Infrastructure.persistence.entityFramework;
+using System.Data.Entity;
 
 namespace Example.Infrastructure.repositories.car
 {
@@ -25,17 +26,44 @@ namespace Example.Infrastructure.repositories.car
             }
         }
 
+        public void Delete(int id)
+        {
+            using (var db = new CarContext())
+            {
+                db.Car.Remove(db.Car.Find(id));
+                db.SaveChanges();
+            }
+        }
+
+        public CarEntitie GetCar(int id)
+        {
+            using (var db = new CarContext())
+            {
+                return db.Car.Find(id);
+            }
+        }
+
         public List<CarEntitie> GetCars()
         {
             using(var db=new CarContext())
             {
-                return db.Car.ToList();
+                return db.Car.Include(x=>x.carOwners).ToList();
             }
         }
 
         public string GetEngine()
         {
             return "V8";
+        }
+
+        public void Update(CarEntitie carEntitie)
+        {
+            using (var db = new CarContext())
+            {
+                db.Car.Attach(carEntitie);
+                db.Entry(carEntitie).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
     }
 }

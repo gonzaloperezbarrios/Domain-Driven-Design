@@ -16,5 +16,8 @@ namespace Example.Domain.repositories.contracts.car
         string GetEngine();
         List<CarEntitie> GetCars();
         void Create(CarEntitie carEntitie);
+        void Update(CarEntitie carEntitie);
+        void Delete(int id);
+        CarEntitie GetCar(int id);
     }
 }

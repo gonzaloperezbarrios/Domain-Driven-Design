@@ -19,6 +19,13 @@ namespace Example.Infrastructure.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            context.CarOwner.AddOrUpdate(x => x.Id, new Transversal.domain.entities.car.CarOwnerEntitie()
+            {
+                Id = 1,
+                Name = "Gonzalo Perez",
+                Age = "30",
+                CarId=1
+            });
         }
     }
 }

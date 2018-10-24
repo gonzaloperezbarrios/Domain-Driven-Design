@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="domain.entities\car\CarEntitie.cs" />
+    <Compile Include="domain.entities\car\CarOwnerEntitie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

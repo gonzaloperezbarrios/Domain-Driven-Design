@@ -17,5 +17,6 @@ namespace Example.Transversal.domain.entities.car
         public string Engine { get; set; }
         [StringLength(100)]
         public string Model { get; set; }
+        public List<CarOwnerEntitie> carOwners { get; set; }
     }
 }

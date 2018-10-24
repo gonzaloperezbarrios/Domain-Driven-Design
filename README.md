@@ -15,7 +15,8 @@
  - Package Manager Console
 	- enable-migrations
 	- update-database
-	- update-database -force
+		- update-database -force :Salta las advertencias.
+		- update-database -verbose :Muestra el SQL que aplica a la base de datos.
 
 ## Capas:
 

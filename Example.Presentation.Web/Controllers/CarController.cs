@@ -34,7 +34,11 @@ namespace Example.Presentation.Web.Controllers
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = carService.GetCar(id);
+            var _car = mapper.Map<CarViewModel>(model);
+            _car.CarId = model.Id;
+            _car.ModelCar = model.Model;
+            return View(_car);
         }
 
         // GET: Car/Create
@@ -67,29 +71,40 @@ namespace Example.Presentation.Web.Controllers
         // GET: Car/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = carService.GetCar(id);
+            var _car = mapper.Map<CarViewModel>(model);
+            _car.CarId = model.Id;
+            _car.ModelCar = model.Model;
+            return View(_car);
         }
 
         // POST: Car/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, CarViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    var _car = mapper.Map<CarEntitie>(model);
+                    _car.Model = model.ModelCar;
+                    _car.Id = id;
+                    carService.Update(_car);
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
+                //Log
             }
+            return View(model);
         }
 
         // GET: Car/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            carService.Delete(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Car/Delete/5

@@ -27,19 +27,53 @@ namespace Example.Application.application.services.car
             this._domainCarRepository = domainCarRepository;
         }
 
+        /// <summary>
+        /// Operación relacionada con logica
+        /// </summary>
+        /// <returns>Calcula la potencia del motor</returns>
+        public string Turbo()
+        {
+            return _domainICarService.Turbo();
+        }
+
+        /// <summary>
+        /// Operación indirecta con la base de datos
+        /// </summary>
         public void Create(CarEntitie carEntitie)
         {
             _domainCarRepository.Create(carEntitie);
         }
 
+        /// <summary>
+        /// Operación indirecta con la base de datos
+        /// </summary>
+        public void Delete(int id)
+        {
+            _domainCarRepository.Delete(id);
+        }
+
+        /// <summary>
+        /// Operación indirecta con la base de datos
+        /// </summary>
         public List<CarEntitie> GetCars()
         {
             return _domainCarRepository.GetCars();
         }
 
-        public string Turbo()
+        /// <summary>
+        /// Operación indirecta con la base de datos
+        /// </summary>
+        public void Update(CarEntitie carEntitie)
         {
-            return _domainICarService.Turbo();
+            _domainCarRepository.Update(carEntitie);
+        }
+
+        /// <summary>
+        /// Operación indirecta con la base de datos
+        /// </summary>
+        public CarEntitie GetCar(int id)
+        {
+            return _domainCarRepository.GetCar(id);
         }
     }
 }
